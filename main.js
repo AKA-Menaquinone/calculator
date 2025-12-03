@@ -1,37 +1,51 @@
-let firstNumber = [];
-let secondNumber = [];
+let firstNumber = '';
+let secondNumber = '';
 let operator = undefined;
-let result = undefined;
 
-function addition (x, y) {
-    return x + y;
+function operate(first, operator, second) {
+    switch (operator) {
+        case 'add':
+            return first + second;
+            break;
+        case 'subtract':
+            return first - second;
+            break;
+        case 'multiply':
+            return first * second;
+            break;
+        case 'divide':
+            return first / second;
+            break;
+        default:
+            return second;
+    }
 }
 
-function subtraction (x, y) {
-    return x - y;
-}
-
-function multiplication (x, y) {
-    return x * y;
-}
-
-function division (x, y) {
-    return x / y;
-}
+const display = document.querySelector('.display');
 
 const numberKeys = document.querySelectorAll('.number');
 numberKeys.forEach((keys) => {
     keys.addEventListener('click', () => {
-        firstNumber.push(keys.id);
-        console.log(firstNumber);
+        firstNumber += keys.id;
+        display.textContent = firstNumber;
     })
 })
 
 const operatorKeys = document.querySelectorAll('.operator');
 operatorKeys.forEach((keys) => {
     keys.addEventListener('click', () => {
-        secondNumber = firstNumber;
-        firstNumber = [];
+        if (firstNumber === '') {
+            
+        } else if (secondNumber === '') {
+            secondNumber = firstNumber;
+            firstNumber = '';
+            operator = keys.id;
+        } else {
+            secondNumber = operate(parseInt(secondNumber), operator, parseInt(firstNumber)).toFixed(2);
+            firstNumber = '';
+            display.textContent = secondNumber;
+            operator = keys.id;
+        }
     })
 })
 
