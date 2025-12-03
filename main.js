@@ -75,3 +75,17 @@ const divisionKey = document.querySelector('#divide');
 divisionKey.addEventListener('click', () => {
     operator = 'divide';
 })
+
+const clearKey = document.querySelector('#clear');
+clearKey.addEventListener('click', () => {
+    firstNumber = '';
+    secondNumber = '';
+    operator = undefined;
+    display.textContent = 0;
+})
+
+const backspaceKey = document.querySelector('#backspace');
+backspaceKey.addEventListener('click', () => {
+    firstNumber = firstNumber.slice(0, -1);
+    display.textContent = firstNumber;
+})
