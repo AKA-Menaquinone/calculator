@@ -15,7 +15,12 @@ function operate(first, operator, second) {
             return first * second;
             break;
         case 'divide':
-            return first / second;
+            if (second != 0) {
+                return first / second;
+            } else {
+                alert("Can't divide by 0!");
+                return second;
+            }
             break;
         default:
             return second;
