@@ -3,6 +3,7 @@ let secondNumber = '';
 let operator = undefined;
 
 function operate(first, operator, second) {
+    console.log(`First: ${first}   Operator: ${operator}   Second: ${second}`)
     switch (operator) {
         case 'add':
             return first + second;
@@ -34,6 +35,7 @@ numberKeys.forEach((keys) => {
 const operatorKeys = document.querySelectorAll('.operator');
 operatorKeys.forEach((keys) => {
     keys.addEventListener('click', () => {
+        console.log(`First: ${firstNumber} Operator: ${operator} Second: ${secondNumber}`);
         if (firstNumber === '') {
             
         } else if (secondNumber === '') {
@@ -41,7 +43,7 @@ operatorKeys.forEach((keys) => {
             firstNumber = '';
             operator = keys.id;
         } else {
-            secondNumber = operate(parseInt(secondNumber), operator, parseInt(firstNumber)).toFixed(2);
+            secondNumber = operate(Number(secondNumber), operator, Number(firstNumber)).toFixed(2);
             firstNumber = '';
             display.textContent = secondNumber;
             operator = keys.id;
